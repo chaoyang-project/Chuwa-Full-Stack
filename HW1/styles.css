@@ -1,0 +1,17 @@
+table,
+th,
+td {
+  border: 1px solid;
+}
+
+table {
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.searchTerm {
+  height: 40px;
+  width: 200px;
+  border: 1px solid;
+  border-radius: 15px 15px 15px 15px;
+}
