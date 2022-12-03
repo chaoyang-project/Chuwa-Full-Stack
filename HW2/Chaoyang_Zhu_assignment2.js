@@ -60,7 +60,7 @@ const expectedReturnArray = [
   { uuid: 6, role: "pm", name: null },
 ];
 
-const mergeTwoArray = (first, second) => {
+const mergeTwoArrays = (first, second) => {
   const map = {};
   [...first, ...second].forEach(({ uuid, role, name }) => {
     if (!map[uuid]) {
@@ -72,7 +72,6 @@ const mergeTwoArray = (first, second) => {
     } else {
       map[uuid] = {
         ...map[uuid],
-        //conditional add properties to object
         ...(role && { role: role ? role : null }),
         ...(name && { name: name ? name : null }),
       };
@@ -81,5 +80,5 @@ const mergeTwoArray = (first, second) => {
   return Object.values(map).sort((left, right) => left - right);
 };
 
-const returnArray = mergeTwoArray(first, second);
+const returnArray = mergeTwoArrays(first, second);
 console.log(returnArray);
