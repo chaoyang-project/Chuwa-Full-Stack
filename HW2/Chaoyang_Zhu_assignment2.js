@@ -63,21 +63,21 @@ const expectedReturnArray = [
 const mergeTwoArrays = (first, second) => {
   const map = {};
   [...first, ...second].forEach(({ uuid, role, name }) => {
-    if (!map[uuid]) {
-      map[uuid] = {
-        uuid,
-        ...{ role: role ? role : null },
-        ...{ name: name ? name : null },
-      };
-    } else {
+    if (map[uuid]) {
       map[uuid] = {
         ...map[uuid],
         ...(role && { role: role ? role : null }),
         ...(name && { name: name ? name : null }),
       };
+    } else {
+      map[uuid] = {
+        uuid: uuid,
+        role: role ? role : null,
+        name: name ? name : null,
+      };
     }
   });
-  return Object.values(map).sort((left, right) => left - right);
+  return Object.values(map).sort((a, b) => a - b);
 };
 
 const returnArray = mergeTwoArrays(first, second);
